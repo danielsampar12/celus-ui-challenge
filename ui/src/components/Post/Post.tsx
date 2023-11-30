@@ -2,6 +2,7 @@ import { IProps } from './IProps';
 import { ImageContainer, Image, PostContainer, Title, Description, BodyContainer } from './styles';
 import { getPostById } from 'state_management/actions/posts/posts.actions';
 import { useAppDispatch } from 'state_management/hooks';
+
 const Post = ({ item }: IProps): JSX.Element => {
   const { title, body, image, id } = item;
   const dispatch = useAppDispatch();

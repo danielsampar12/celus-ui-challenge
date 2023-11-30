@@ -11,7 +11,9 @@ const Post = ({ item }: IProps): JSX.Element => {
 
   const handleClick = (): void => {
     // @ts-ignore
-    dispatch(getPostById(id)).then(() => navigate(`/post/${id}`));
+    dispatch(getPostById(id));
+
+    navigate(`/post/${id}`);
   };
 
   return (

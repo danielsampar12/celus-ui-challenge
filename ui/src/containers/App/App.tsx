@@ -7,7 +7,7 @@ import Notification from 'components/Notification/Notification';
 import { useAppSelector } from 'state_management/hooks';
 import { AppState } from 'state_management/store';
 import { useSelector } from 'react-redux';
-import PostPage from 'components/PostPage/PostPage';
+import PostPage from 'components/PostPage';
 
 const App = (): JSX.Element => {
   const { selectedPost, postsList } = useAppSelector((state: AppState) => state.posts);

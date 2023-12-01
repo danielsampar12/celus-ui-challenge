@@ -1,3 +1,4 @@
+import { formatDistanceToNow } from 'utils/formatDistanceToNow';
 import { IProps } from './IProps';
 import { Container, Footer, Header, ReplyButton, ReplyText, Text, Time, UserImage, UserName } from './styles';
 
@@ -12,7 +13,7 @@ const Comment = ({ comment }: IProps): JSX.Element => {
       <Text>{comment.text}</Text>
 
       <Footer>
-        <Time>2 minutes ago</Time>
+        <Time>{formatDistanceToNow(comment.createAt)}</Time>
 
         <ReplyButton
           onClick={() => {

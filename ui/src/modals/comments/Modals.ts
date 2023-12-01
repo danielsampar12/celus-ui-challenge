@@ -5,4 +5,6 @@ export type IComment = {
   userId: string;
   userImage: string;
   text: string;
+  createAt: string;
+  repliedToCommentId?: string;
 };

@@ -9,6 +9,7 @@ export const commentsListMock: Array<IComment> = [
     userImage:
       'https://www.creativefabrica.com/wp-content/uploads/2022/10/25/Person-icon-Graphics-43204353-1-580x386.jpg',
     text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    createAt: '2023-12-01T00:34:55.396Z',
   },
   {
     id: '36bf87d6-6570-482b-aec7-067f1ed04c41',
@@ -18,6 +19,7 @@ export const commentsListMock: Array<IComment> = [
     userImage:
       'https://www.creativefabrica.com/wp-content/uploads/2022/10/25/Person-icon-Graphics-43204353-1-580x386.jpg',
     text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    createAt: '2023-12-01T22:34:55.396Z',
   },
   {
     id: '5c31f4ea-a278-4309-a97e-a921d72c0020',
@@ -27,5 +29,7 @@ export const commentsListMock: Array<IComment> = [
     userImage:
       'https://www.creativefabrica.com/wp-content/uploads/2022/10/25/Person-icon-Graphics-43204353-1-580x386.jpg',
     text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    createAt: '2023-09-01T00:34:55.396Z',
+    repliedToCommentId: '1e6f3fe6-c7cb-46bc-8286-004db4a6d1b0',
   },
 ];

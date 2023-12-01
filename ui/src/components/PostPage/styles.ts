@@ -8,18 +8,16 @@ export const PostPageContainer = styled(Container)`
 export const ContentContainer = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
 
-  @media (max-width: 768px) {
+  gap: 16px;
+
+  @media (max-width: 1024px) {
     flex-direction: column;
   }
 `;
 
 export const TitleTextAndComentsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  margin-left: 5px;
+  align-items: flex-start;
 `;
 
 export const Title = styled.h1`
@@ -28,14 +26,6 @@ export const Title = styled.h1`
   text-align: left;
   line-height: 28px;
   letter-spacing: 0.3px;
-`;
-
-export const SubTitle = styled.h2`
-  font-size: 20px;
-  font-weight: 500;
-  text-align: left;
-  line-height: 20px;
-  letter-spacing: 0.25px;
 `;
 
 export const Description = styled.p`
@@ -47,8 +37,6 @@ export const Description = styled.p`
   margin-bottom: 32px;
 `;
 
-export const ScrollDiv = styled.div``;
-
 export const Image = styled.img`
   width: 50%;
   height: 100%;
@@ -59,7 +47,7 @@ export const Image = styled.img`
 
   margin-right: 5px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     width: 100%;
   }
 `;

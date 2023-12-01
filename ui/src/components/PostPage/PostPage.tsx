@@ -1,18 +1,11 @@
 import { useParams } from 'react-router-dom';
 import { IProps } from './IProps';
-import {
-  ContentContainer,
-  Description,
-  Image,
-  PostPageContainer,
-  ScrollDiv,
-  SubTitle,
-  Title,
-  TitleTextAndComentsContainer,
-} from './styles';
+import { ContentContainer, Description, Image, PostPageContainer, Title, TitleTextAndComentsContainer } from './styles';
 import { useEffect } from 'react';
 import { useAppDispatch } from 'state_management/hooks';
 import { getPostById } from 'state_management/actions/posts/posts.actions';
+import CommentsList from 'components/CommentsList/CommentsList';
+import { getCommentsByPostId } from 'state_management/actions/comments/comments.actions';
 
 const PostPage = ({ post }: IProps): JSX.Element => {
   const { id } = useParams();
@@ -21,6 +14,10 @@ const PostPage = ({ post }: IProps): JSX.Element => {
   useEffect(() => {
     if (!post && id) {
       dispatch(getPostById(id));
+    }
+
+    if (id) {
+      dispatch(getCommentsByPostId(id));
     }
   }, []);
 
@@ -39,8 +36,7 @@ const PostPage = ({ post }: IProps): JSX.Element => {
         <TitleTextAndComentsContainer>
           <Title>{post.title}</Title>
           <Description>{post.body}</Description>
-          <SubTitle>Comments (2)</SubTitle>
-          <ScrollDiv></ScrollDiv>
+          <CommentsList />
         </TitleTextAndComentsContainer>
       </ContentContainer>
     </PostPageContainer>

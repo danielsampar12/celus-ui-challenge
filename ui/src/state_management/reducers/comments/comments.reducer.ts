@@ -1,12 +1,12 @@
 import { IComment } from 'modals/comments/Modals';
 import { CommentsActions, CommentsActionsTypes } from 'state_management/actions/comments/actionTypes';
 
-type CommentsWithReplies = {
+export type ICommentsWithReplies = {
   replies: Array<IComment>;
 } & IComment;
 
 export interface CommentsState {
-  comments: Array<CommentsWithReplies>;
+  comments: Array<ICommentsWithReplies>;
 }
 
 export const initialState: CommentsState = {
@@ -20,7 +20,7 @@ const CommentsReducer = (state = initialState, action: CommentsActions) => {
 
       const parsedCommentsWithReplies = comments.reduce((acc, comment) => {
         if (comment.repliedToCommentId) {
-          const newAcc = acc.map((accumuletedComment: CommentsWithReplies) => {
+          const newAcc = acc.map((accumuletedComment: ICommentsWithReplies) => {
             if (accumuletedComment.id === comment.repliedToCommentId) {
               return {
                 ...accumuletedComment,
@@ -38,7 +38,7 @@ const CommentsReducer = (state = initialState, action: CommentsActions) => {
         }
 
         return [...acc, { ...comment, replies: [] }];
-      }, [] as Array<CommentsWithReplies>);
+      }, [] as Array<ICommentsWithReplies>);
 
       return {
         ...state,

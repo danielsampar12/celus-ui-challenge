@@ -2,7 +2,7 @@ import { formatDistanceToNow } from 'utils/formatDistanceToNow';
 import { IProps } from './IProps';
 import { Container, Footer, Header, ReplyButton, ReplyText, Text, Time, UserImage, UserName } from './styles';
 
-const Comment = ({ comment }: IProps): JSX.Element => {
+function Comment({ comment }: IProps) {
   return (
     <Container>
       <Header>
@@ -25,5 +25,5 @@ const Comment = ({ comment }: IProps): JSX.Element => {
       </Footer>
     </Container>
   );
-};
+}
 export default Comment;

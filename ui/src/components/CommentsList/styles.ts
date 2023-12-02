@@ -14,3 +14,13 @@ export const Title = styled.h2`
   line-height: 20px;
   letter-spacing: 0.25px;
 `;
+
+export const ScrollDiv = styled.div`
+  height: calc(50vh - 80px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  overflow: hidden;
+  overflow-y: scroll;
+`;

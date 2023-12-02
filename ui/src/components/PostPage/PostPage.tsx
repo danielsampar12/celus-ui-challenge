@@ -4,7 +4,7 @@ import { ContentContainer, Description, Image, PostPageContainer, Title, TitleTe
 import { useEffect } from 'react';
 import { useAppDispatch } from 'state_management/hooks';
 import { getPostById } from 'state_management/actions/posts/posts.actions';
-import CommentsList from 'components/CommentsList/CommentsList';
+import CommentsList from 'components/CommentsList';
 import { getCommentsByPostId } from 'state_management/actions/comments/comments.actions';
 
 const PostPage = ({ post }: IProps): JSX.Element => {

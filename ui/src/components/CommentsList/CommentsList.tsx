@@ -4,7 +4,7 @@ import { Container, ScrollDiv, Title } from './styles';
 import { useAppSelector } from 'state_management/hooks';
 import { AppState } from 'state_management/store';
 
-const CommentsList = (): JSX.Element => {
+function CommentsList() {
   const { comments } = useAppSelector((state: AppState) => state.comments);
 
   return (
@@ -18,5 +18,5 @@ const CommentsList = (): JSX.Element => {
       </ScrollDiv>
     </Container>
   );
-};
+}
 export default CommentsList;

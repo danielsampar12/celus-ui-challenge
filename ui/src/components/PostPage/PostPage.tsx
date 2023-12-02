@@ -7,7 +7,7 @@ import { getPostById } from 'state_management/actions/posts/posts.actions';
 import CommentsList from 'components/CommentsList';
 import { getCommentsByPostId } from 'state_management/actions/comments/comments.actions';
 
-const PostPage = ({ post }: IProps): JSX.Element => {
+function PostPage({ post }: IProps) {
   const { id } = useParams();
   const dispatch = useAppDispatch();
 
@@ -41,5 +41,5 @@ const PostPage = ({ post }: IProps): JSX.Element => {
       </ContentContainer>
     </PostPageContainer>
   );
-};
+}
 export default PostPage;

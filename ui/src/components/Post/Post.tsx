@@ -4,7 +4,7 @@ import { ImageContainer, Image, PostContainer, Title, Description, BodyContainer
 import { getPostById } from 'state_management/actions/posts/posts.actions';
 import { useAppDispatch } from 'state_management/hooks';
 
-const Post = ({ item }: IProps): JSX.Element => {
+function Post({ item }: IProps) {
   const { title, body, image, id } = item;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -27,5 +27,5 @@ const Post = ({ item }: IProps): JSX.Element => {
       </BodyContainer>
     </PostContainer>
   );
-};
+}
 export default Post;

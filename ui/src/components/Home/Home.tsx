@@ -5,7 +5,7 @@ import { getAllPosts } from 'state_management/actions/posts/posts.actions';
 import { useAppDispatch } from 'state_management/hooks';
 import { IProps } from './IProps';
 
-const Home = ({ postsList }: IProps): JSX.Element => {
+function Home({ postsList }: IProps) {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -29,6 +29,6 @@ const Home = ({ postsList }: IProps): JSX.Element => {
       </GridContainer>
     </HomeContainer>
   );
-};
+}
 
 export default Home;

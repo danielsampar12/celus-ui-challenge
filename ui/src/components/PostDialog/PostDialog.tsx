@@ -16,7 +16,7 @@ import {
   CommentsSection,
 } from './styles';
 
-export const PostDialog = ({ open, selectedPost }: IProps): JSX.Element => {
+export function PostDialog({ open, selectedPost }: IProps) {
   const { title, body, image } = selectedPost;
   const dispatch = useAppDispatch();
   const handleClose = (): void => {
@@ -46,4 +46,4 @@ export const PostDialog = ({ open, selectedPost }: IProps): JSX.Element => {
       </PostDialogContainer>
     </Dialog>
   );
-};
+}

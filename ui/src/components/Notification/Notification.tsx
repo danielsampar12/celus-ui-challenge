@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { hideErrorNotification } from 'state_management/actions/notification/notification.actions';
 import { IProps } from './IProps';
 
-const Notification = ({ open, message }: IProps): JSX.Element => {
+function Notification({ open, message }: IProps) {
   const dispatch = useDispatch();
 
   const handleClose = (): void => {
@@ -18,5 +18,5 @@ const Notification = ({ open, message }: IProps): JSX.Element => {
       </MuiAlert>
     </Snackbar>
   );
-};
+}
 export default Notification;

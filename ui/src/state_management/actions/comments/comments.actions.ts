@@ -1,4 +1,5 @@
-import { CommentsActionsTypes, GetCommentsByPostIdAction } from './actionTypes';
+import { IComment } from 'modals/comments/Modals';
+import { CommentsActionsTypes, CreateCommentAction, GetCommentsByPostIdAction } from './actionTypes';
 
 export const getCommentsByPostId = (postId: string): GetCommentsByPostIdAction => {
   return {
@@ -9,5 +10,12 @@ export const getCommentsByPostId = (postId: string): GetCommentsByPostIdAction =
         url: `/comments?postId=${postId}`,
       },
     },
+  };
+};
+
+export const createComment = (comment: IComment): CreateCommentAction => {
+  return {
+    newComment: comment,
+    type: CommentsActionsTypes.CREATE_COMMENT,
   };
 };

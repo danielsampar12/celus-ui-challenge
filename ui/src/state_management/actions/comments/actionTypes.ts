@@ -5,6 +5,7 @@ export enum CommentsActionsTypes {
   GET_COMMENT_BY_POST_ID = 'GET_COMMENT_BY_POST_ID',
   GET_COMMENT_BY_POST_ID_SUCCESS = 'GET_COMMENT_BY_POST_ID_SUCCESS',
   GET_COMMENT_BY_POST_ID_FAIL = 'GET_COMMENT_BY_POST_ID_FAIL',
+  CREATE_COMMENT = 'CREATE_COMMENT',
 }
 
 export interface GetCommentsByPostIdAction extends AxiosRequestPayload {
@@ -25,7 +26,14 @@ export interface GetCommentsByPostIdActionFail
   type: CommentsActionsTypes.GET_COMMENT_BY_POST_ID_FAIL;
 }
 
+// no need to create success or fail since it's just state management
+export interface CreateCommentAction {
+  newComment: IComment;
+  type: CommentsActionsTypes.CREATE_COMMENT;
+}
+
 export type CommentsActions =
   | GetCommentsByPostIdAction
   | GetCommentsByPostIdActionSuccess
-  | GetCommentsByPostIdActionFail;
+  | GetCommentsByPostIdActionFail
+  | CreateCommentAction;

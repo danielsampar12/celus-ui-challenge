@@ -1,5 +1,6 @@
+import { commentsListMock } from 'mocks/comments.mock';
 import { CommentsActionsTypes } from './actionTypes';
-import { getCommentsByPostId } from './comments.actions';
+import { createComment, getCommentsByPostId } from './comments.actions';
 
 describe('Comments actions', () => {
   test('getCommentsByPostId', () => {
@@ -10,6 +11,10 @@ describe('Comments actions', () => {
           url: '/comments?postId=3747f14a-083c-467c-af4c-48a29fc965fe',
         },
       },
+      type: CommentsActionsTypes.GET_COMMENT_BY_POST_ID,
+    });
+    expect(createComment(commentsListMock[0])).toEqual({
+      newComment: commentsListMock[0],
       type: CommentsActionsTypes.GET_COMMENT_BY_POST_ID,
     });
   });

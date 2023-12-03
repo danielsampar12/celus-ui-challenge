@@ -16,8 +16,10 @@ export const initialState: CommentsState = {
 const CommentsReducer = (state = initialState, action: CommentsActions) => {
   switch (action.type) {
     case CommentsActionsTypes.GET_COMMENT_BY_POST_ID_SUCCESS: {
+      // ! I could put this directly on db.json but it would make its structure more complex
+      // ! since the challenge is for the UI part I tried to keep most of the logic here
+      // ! even if I know this is not the best approach
       const comments = action.payload.data;
-
       const parsedCommentsWithReplies = comments.reduce((acc, comment) => {
         if (comment.repliedToCommentId) {
           const newAcc = acc.map((accumuletedComment: ICommentsWithReplies) => {
@@ -45,6 +47,11 @@ const CommentsReducer = (state = initialState, action: CommentsActions) => {
         comments: parsedCommentsWithReplies,
       };
     }
+    case CommentsActionsTypes.CREATE_COMMENT:
+      return {
+        ...state,
+        comments: [...state.comments, { ...action.newComment, replies: [] }],
+      };
     default:
       return state;
   }

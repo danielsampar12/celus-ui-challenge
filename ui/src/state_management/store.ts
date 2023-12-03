@@ -4,6 +4,7 @@ import axiosMiddleware from 'redux-axios-middleware';
 import { rootReducer } from './reducers';
 import { PostsState } from './reducers/posts/posts.reducer';
 import { CommentsState } from './reducers/comments/comments.reducer';
+import { UsersState } from './reducers/users/users.reducer';
 
 const apiHost = process.env.API_HOST || 'http://localhost:8080';
 
@@ -14,6 +15,7 @@ const client = axios.create({
 
 export interface AppState {
   posts: PostsState;
+  users: UsersState;
   comments: CommentsState;
 }
 export const store = configureStore({

@@ -15,14 +15,14 @@ import {
 import { useAppDispatch, useAppSelector } from 'state_management/hooks';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
-import { deleteComment, selectComment } from 'state_management/actions/comments/comments.actions';
+import { deleteComment, openEditCommentDialog } from 'state_management/actions/comments/comments.actions';
 
 function Comment({ comment }: IProps) {
   const { user } = useAppSelector((state) => state.users);
   const dispatch = useAppDispatch();
 
   const handleEditComment = () => {
-    dispatch(selectComment(comment));
+    dispatch(openEditCommentDialog(comment));
   };
 
   const handleDeleteComment = () => {

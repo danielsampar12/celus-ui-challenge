@@ -14,7 +14,7 @@ import { EditCommentDialog } from 'components/EditCommentDialog/EditCommentDialo
 
 function App() {
   const { selectedPost, postsList } = useAppSelector((state: AppState) => state.posts);
-  const { selectedComment } = useAppSelector((state: AppState) => state.comments);
+  const { selectedComment, isEditing } = useAppSelector((state: AppState) => state.comments);
   const { open, message } = useSelector((state: any) => {
     return state.notification;
   });
@@ -33,7 +33,7 @@ function App() {
         <Route path="/post/:id" element={<PostPage post={selectedPost} />} />
       </Routes>
       <Notification open={open} message={message} />
-      {selectedComment ? <EditCommentDialog open selectedComment={selectedComment} /> : <></>}
+      {selectedComment && isEditing ? <EditCommentDialog open selectedComment={selectedComment} /> : <></>}
     </>
   );
 }

@@ -8,6 +8,7 @@ export enum CommentsActionsTypes {
   GET_COMMENT_BY_POST_ID_FAIL = 'GET_COMMENT_BY_POST_ID_FAIL',
   CREATE_COMMENT = 'CREATE_COMMENT',
   CLOSE_EDIT_COMMENT_DIALOG = 'CLOSE_EDIT_COMMENT_DIALOG',
+  OPEN_EDIT_COMMENT_DIALOG = 'OPEN_EDIT_COMMENT_DIALOG',
   SELECT_COMMENT = 'SELECT_COMMENT',
   EDIT_COMMENT = 'EDIT_COMMENT',
   DELETE_COMMENT = 'DELETE_COMMENT',
@@ -41,6 +42,12 @@ export interface CloseEditCommentDialogAction {
   type: CommentsActionsTypes.CLOSE_EDIT_COMMENT_DIALOG;
 }
 
+export interface OpenEditCommentDialogAction {
+  isEditing: boolean;
+  selectedComment: ICommentsWithReplies;
+  type: CommentsActionsTypes.OPEN_EDIT_COMMENT_DIALOG;
+}
+
 export interface SelectCommentAction {
   selectedComment: ICommentsWithReplies;
   type: CommentsActionsTypes.SELECT_COMMENT;
@@ -65,4 +72,5 @@ export type CommentsActions =
   | CloseEditCommentDialogAction
   | SelectCommentAction
   | EditCommentAction
-  | DeleteCommentAction;
+  | DeleteCommentAction
+  | OpenEditCommentDialogAction;

@@ -6,6 +6,7 @@ import {
   DeleteCommentAction,
   EditCommentAction,
   GetCommentsByPostIdAction,
+  OpenEditCommentDialogAction,
   SelectCommentAction,
 } from './actionTypes';
 import { ICommentsWithReplies } from 'state_management/reducers/comments/comments.reducer';
@@ -32,6 +33,14 @@ export const createComment = (comment: IComment): CreateCommentAction => {
 export const closeEditCommentDialog = (): CloseEditCommentDialogAction => {
   return {
     type: CommentsActionsTypes.CLOSE_EDIT_COMMENT_DIALOG,
+  };
+};
+
+export const openEditCommentDialog = (comment: ICommentsWithReplies): OpenEditCommentDialogAction => {
+  return {
+    isEditing: true,
+    selectedComment: comment,
+    type: CommentsActionsTypes.OPEN_EDIT_COMMENT_DIALOG,
   };
 };
 

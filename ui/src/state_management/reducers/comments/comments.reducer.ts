@@ -8,11 +8,13 @@ export type ICommentsWithReplies = {
 export interface CommentsState {
   comments: Array<ICommentsWithReplies>;
   selectedComment: ICommentsWithReplies | null;
+  isEditing: boolean;
 }
 
 export const initialState: CommentsState = {
   comments: [],
   selectedComment: null,
+  isEditing: false,
 };
 
 const CommentsReducer = (state = initialState, action: CommentsActions) => {
@@ -58,6 +60,7 @@ const CommentsReducer = (state = initialState, action: CommentsActions) => {
       return {
         ...state,
         selectedComment: null,
+        isEditing: false,
       };
     case CommentsActionsTypes.SELECT_COMMENT:
       return {
@@ -80,6 +83,12 @@ const CommentsReducer = (state = initialState, action: CommentsActions) => {
         comments: newComments,
       };
     }
+    case CommentsActionsTypes.OPEN_EDIT_COMMENT_DIALOG:
+      return {
+        ...state,
+        selectedComment: action.selectedComment,
+        isEditing: true,
+      };
     default:
       return state;
   }

@@ -15,7 +15,7 @@ import {
 import { useAppDispatch, useAppSelector } from 'state_management/hooks';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
-import { selectComment } from 'state_management/actions/comments/comments.actions';
+import { deleteComment, selectComment } from 'state_management/actions/comments/comments.actions';
 
 function Comment({ comment }: IProps) {
   const { user } = useAppSelector((state) => state.users);
@@ -23,6 +23,10 @@ function Comment({ comment }: IProps) {
 
   const handleEditComment = () => {
     dispatch(selectComment(comment));
+  };
+
+  const handleDeleteComment = () => {
+    dispatch(deleteComment(comment.id));
   };
 
   return (
@@ -43,7 +47,7 @@ function Comment({ comment }: IProps) {
               <EditOutlinedIcon />
             </UnstyledButton>
 
-            <UnstyledButton>
+            <UnstyledButton onClick={handleDeleteComment}>
               <DeleteOutlineOutlinedIcon />
             </UnstyledButton>
           </ButtonsContainer>

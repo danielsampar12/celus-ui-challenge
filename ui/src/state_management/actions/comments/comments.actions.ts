@@ -3,6 +3,7 @@ import {
   CloseEditCommentDialogAction,
   CommentsActionsTypes,
   CreateCommentAction,
+  DeleteCommentAction,
   EditCommentAction,
   GetCommentsByPostIdAction,
   SelectCommentAction,
@@ -46,5 +47,12 @@ export const editComment = (commentId: string, newText: string): EditCommentActi
     commentId,
     newText,
     type: CommentsActionsTypes.EDIT_COMMENT,
+  };
+};
+
+export const deleteComment = (commentId: string): DeleteCommentAction => {
+  return {
+    commentId,
+    type: CommentsActionsTypes.DELETE_COMMENT,
   };
 };

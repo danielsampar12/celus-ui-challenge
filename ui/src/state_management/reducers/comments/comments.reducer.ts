@@ -73,6 +73,13 @@ const CommentsReducer = (state = initialState, action: CommentsActions) => {
         comments: newComments,
       };
     }
+    case CommentsActionsTypes.DELETE_COMMENT: {
+      const newComments = state.comments.filter((comment) => comment.id !== action.commentId);
+      return {
+        ...state,
+        comments: newComments,
+      };
+    }
     default:
       return state;
   }

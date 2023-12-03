@@ -1,6 +1,6 @@
 import { commentsListMock } from 'mocks/comments.mock';
 import { CommentsActionsTypes } from './actionTypes';
-import { createComment, getCommentsByPostId, selectComment } from './comments.actions';
+import { createComment, deleteComment, editComment, getCommentsByPostId, selectComment } from './comments.actions';
 
 describe('Comments actions', () => {
   test('getCommentsByPostId', () => {
@@ -20,6 +20,16 @@ describe('Comments actions', () => {
     expect(selectComment(commentsListMock[0])).toEqual({
       selectComment: commentsListMock[0],
       type: CommentsActionsTypes.SELECT_COMMENT,
+    });
+    expect(editComment(commentsListMock[0].id, 'teste')).toEqual({
+      comments: commentsListMock.map((comment) =>
+        comment.id === commentsListMock[0].id ? { ...comment, text: 'teste' } : comment,
+      ),
+      type: CommentsActionsTypes.EDIT_COMMENT,
+    });
+    expect(deleteComment(commentsListMock[0].id)).toEqual({
+      comments: commentsListMock.filter((comment) => comment.id !== commentsListMock[0].id),
+      type: CommentsActionsTypes.DELETE_COMMENT,
     });
   });
 });

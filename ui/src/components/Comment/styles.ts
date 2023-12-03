@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.button`
+  all: unset;
+  cursor: pointer;
+
   display: flex;
   max-width: 100%;
   padding: 24px 25px;

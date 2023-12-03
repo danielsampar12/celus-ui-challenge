@@ -16,21 +16,26 @@ import { useAppDispatch, useAppSelector } from 'state_management/hooks';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { deleteComment, openEditCommentDialog } from 'state_management/actions/comments/comments.actions';
+import React from 'react';
 
 function Comment({ comment }: IProps) {
   const { user } = useAppSelector((state) => state.users);
   const dispatch = useAppDispatch();
 
-  const handleEditComment = () => {
+  const handleEditComment = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.stopPropagation();
+
     dispatch(openEditCommentDialog(comment));
   };
 
-  const handleDeleteComment = () => {
+  const handleDeleteComment = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.stopPropagation();
+
     dispatch(deleteComment(comment.id));
   };
 
   return (
-    <Container>
+    <Container onClick={() => console.log('ai tio tira')}>
       <Header>
         <UserImage alt="User icon" src={comment.userImage} />
         <UserName>{comment.username}</UserName>
@@ -64,4 +69,5 @@ function Comment({ comment }: IProps) {
     </Container>
   );
 }
+
 export default Comment;

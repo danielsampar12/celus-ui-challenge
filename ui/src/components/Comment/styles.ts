@@ -57,10 +57,12 @@ export const Time = styled.span`
 
 export const ButtonsContainer = styled.div`
   width: 60px;
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
 `;
 
-export const ReplyButton = styled.button`
+export const UnstyledButton = styled.button`
   all: unset;
   cursor: pointer;
 `;

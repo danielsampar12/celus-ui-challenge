@@ -1,6 +1,6 @@
 import { commentsListMock } from 'mocks/comments.mock';
 import { CommentsActionsTypes } from './actionTypes';
-import { createComment, getCommentsByPostId } from './comments.actions';
+import { createComment, getCommentsByPostId, selectComment } from './comments.actions';
 
 describe('Comments actions', () => {
   test('getCommentsByPostId', () => {
@@ -16,6 +16,10 @@ describe('Comments actions', () => {
     expect(createComment(commentsListMock[0])).toEqual({
       newComment: commentsListMock[0],
       type: CommentsActionsTypes.GET_COMMENT_BY_POST_ID,
+    });
+    expect(selectComment(commentsListMock[0])).toEqual({
+      selectComment: commentsListMock[0],
+      type: CommentsActionsTypes.SELECT_COMMENT,
     });
   });
 });

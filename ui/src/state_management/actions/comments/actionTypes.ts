@@ -1,11 +1,14 @@
 import { AxiosErrorPayload, AxiosRequestPayload, AxiosSuccessPayload } from 'modals/axios/Modals';
 import { IComment } from 'modals/comments/Modals';
+import { ICommentsWithReplies } from 'state_management/reducers/comments/comments.reducer';
 
 export enum CommentsActionsTypes {
   GET_COMMENT_BY_POST_ID = 'GET_COMMENT_BY_POST_ID',
   GET_COMMENT_BY_POST_ID_SUCCESS = 'GET_COMMENT_BY_POST_ID_SUCCESS',
   GET_COMMENT_BY_POST_ID_FAIL = 'GET_COMMENT_BY_POST_ID_FAIL',
   CREATE_COMMENT = 'CREATE_COMMENT',
+  CLOSE_EDIT_COMMENT_DIALOG = 'CLOSE_EDIT_COMMENT_DIALOG',
+  SELECT_COMMENT = 'SELECT_COMMENT',
 }
 
 export interface GetCommentsByPostIdAction extends AxiosRequestPayload {
@@ -32,8 +35,19 @@ export interface CreateCommentAction {
   type: CommentsActionsTypes.CREATE_COMMENT;
 }
 
+export interface CloseEditCommentDialogAction {
+  type: CommentsActionsTypes.CLOSE_EDIT_COMMENT_DIALOG;
+}
+
+export interface SelectCommentAction {
+  selectedComment: ICommentsWithReplies;
+  type: CommentsActionsTypes.SELECT_COMMENT;
+}
+
 export type CommentsActions =
   | GetCommentsByPostIdAction
   | GetCommentsByPostIdActionSuccess
   | GetCommentsByPostIdActionFail
-  | CreateCommentAction;
+  | CreateCommentAction
+  | CloseEditCommentDialogAction
+  | SelectCommentAction;

@@ -1,5 +1,6 @@
 import { ICommentsWithReplies } from 'state_management/reducers/comments/comments.reducer';
 
 export interface IProps {
-  comment: ICommentsWithReplies;
+  selectedComment: ICommentsWithReplies;
+  open: boolean;
 }

@@ -1,5 +1,12 @@
 import { IComment } from 'modals/comments/Modals';
-import { CommentsActionsTypes, CreateCommentAction, GetCommentsByPostIdAction } from './actionTypes';
+import {
+  CloseEditCommentDialogAction,
+  CommentsActionsTypes,
+  CreateCommentAction,
+  GetCommentsByPostIdAction,
+  SelectCommentAction,
+} from './actionTypes';
+import { ICommentsWithReplies } from 'state_management/reducers/comments/comments.reducer';
 
 export const getCommentsByPostId = (postId: string): GetCommentsByPostIdAction => {
   return {
@@ -17,5 +24,18 @@ export const createComment = (comment: IComment): CreateCommentAction => {
   return {
     newComment: comment,
     type: CommentsActionsTypes.CREATE_COMMENT,
+  };
+};
+
+export const closeEditCommentDialog = (): CloseEditCommentDialogAction => {
+  return {
+    type: CommentsActionsTypes.CLOSE_EDIT_COMMENT_DIALOG,
+  };
+};
+
+export const selectComment = (comment: ICommentsWithReplies): SelectCommentAction => {
+  return {
+    selectedComment: comment,
+    type: CommentsActionsTypes.SELECT_COMMENT,
   };
 };

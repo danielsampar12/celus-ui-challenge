@@ -3,6 +3,7 @@ import {
   CloseEditCommentDialogAction,
   CommentsActionsTypes,
   CreateCommentAction,
+  EditCommentAction,
   GetCommentsByPostIdAction,
   SelectCommentAction,
 } from './actionTypes';
@@ -37,5 +38,13 @@ export const selectComment = (comment: ICommentsWithReplies): SelectCommentActio
   return {
     selectedComment: comment,
     type: CommentsActionsTypes.SELECT_COMMENT,
+  };
+};
+
+export const editComment = (commentId: string, newText: string): EditCommentAction => {
+  return {
+    commentId,
+    newText,
+    type: CommentsActionsTypes.EDIT_COMMENT,
   };
 };

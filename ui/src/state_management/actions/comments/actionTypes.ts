@@ -9,6 +9,7 @@ export enum CommentsActionsTypes {
   CREATE_COMMENT = 'CREATE_COMMENT',
   CLOSE_EDIT_COMMENT_DIALOG = 'CLOSE_EDIT_COMMENT_DIALOG',
   SELECT_COMMENT = 'SELECT_COMMENT',
+  EDIT_COMMENT = 'EDIT_COMMENT',
 }
 
 export interface GetCommentsByPostIdAction extends AxiosRequestPayload {
@@ -44,10 +45,17 @@ export interface SelectCommentAction {
   type: CommentsActionsTypes.SELECT_COMMENT;
 }
 
+export interface EditCommentAction {
+  commentId: string;
+  newText: string;
+  type: CommentsActionsTypes.EDIT_COMMENT;
+}
+
 export type CommentsActions =
   | GetCommentsByPostIdAction
   | GetCommentsByPostIdActionSuccess
   | GetCommentsByPostIdActionFail
   | CreateCommentAction
   | CloseEditCommentDialogAction
-  | SelectCommentAction;
+  | SelectCommentAction
+  | EditCommentAction;

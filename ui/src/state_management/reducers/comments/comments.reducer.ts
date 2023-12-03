@@ -64,6 +64,15 @@ const CommentsReducer = (state = initialState, action: CommentsActions) => {
         ...state,
         selectedComment: action.selectedComment,
       };
+    case CommentsActionsTypes.EDIT_COMMENT: {
+      const newComments = state.comments.map((comment) =>
+        comment.id === action.commentId ? { ...comment, text: action.newText } : comment,
+      );
+      return {
+        ...state,
+        comments: newComments,
+      };
+    }
     default:
       return state;
   }

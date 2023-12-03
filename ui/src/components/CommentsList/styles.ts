@@ -3,8 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-
-  gap: 16px;
 `;
 
 export const Title = styled.h2`
@@ -16,9 +14,12 @@ export const Title = styled.h2`
 `;
 
 export const ScrollDiv = styled.div`
-  height: calc(50vh - 80px);
+  height: calc(50vh - 130px);
   display: flex;
   flex-direction: column;
+
+  margin-bottom: 16px;
+
   gap: 16px;
 
   overflow: hidden;

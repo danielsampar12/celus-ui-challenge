@@ -17,7 +17,8 @@ export const ContentContainer = styled.div`
 `;
 
 export const TitleTextAndComentsContainer = styled.div`
-  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Title = styled.h1`
@@ -33,8 +34,6 @@ export const Description = styled.p`
   font-weight: 400;
   line-height: 20px;
   letter-spacing: 0.2px;
-
-  margin-bottom: 32px;
 `;
 
 export const Image = styled.img`

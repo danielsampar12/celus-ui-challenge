@@ -1,4 +1,10 @@
-import { CloseDialogAction, GetAllPostsAction, GetPostByIdAction, PostsActionTypes } from './actionTypes';
+import {
+  CloseDialogAction,
+  GetAllPostsAction,
+  GetPostByIdAction,
+  PostsActionTypes,
+  SearchPostsAction,
+} from './actionTypes';
 
 export const getAllPosts = (): GetAllPostsAction => {
   return {
@@ -27,5 +33,17 @@ export const getPostById = (id: string): GetPostByIdAction => {
 export const closePostDialog = (): CloseDialogAction => {
   return {
     type: PostsActionTypes.CLOSE_POST_DIALOG,
+  };
+};
+
+export const searchPosts = (searchValue: string): SearchPostsAction => {
+  return {
+    type: PostsActionTypes.SEARCH_POSTS,
+    payload: {
+      request: {
+        method: 'get',
+        url: `/posts?q=${searchValue}`,
+      },
+    },
   };
 };

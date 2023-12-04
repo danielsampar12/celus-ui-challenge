@@ -9,6 +9,9 @@ export enum PostsActionTypes {
   GET_POST_BY_ID_SUCCESS = 'GET_POST_BY_ID_SUCCESS',
   GET_POST_BY_ID_FAIL = 'GET_POST_BY_ID_FAIL',
   CLOSE_POST_DIALOG = 'CLOSE_POST_DIALOG',
+  SEARCH_POSTS = 'SEARCH_POSTS',
+  SEARCH_POSTS_SUCCESS = 'SEARCH_POSTS_SUCCESS',
+  SEARCH_POSTS_FAIL = 'SEARCH_POSTS_FAIL',
 }
 
 export interface GetAllPostsAction extends AxiosRequestPayload {
@@ -43,6 +46,20 @@ export interface CloseDialogAction {
   type: PostsActionTypes.CLOSE_POST_DIALOG;
 }
 
+export interface SearchPostsAction extends AxiosRequestPayload {
+  type: PostsActionTypes.SEARCH_POSTS;
+}
+
+export interface SearchPostsActionSuccess
+  extends AxiosSuccessPayload<Array<IPost>, PostsActionTypes.SEARCH_POSTS_SUCCESS, SearchPostsAction> {
+  type: PostsActionTypes.SEARCH_POSTS_SUCCESS;
+}
+
+export interface SearchPostsActionFail
+  extends AxiosErrorPayload<PostsActionTypes.SEARCH_POSTS_FAIL, SearchPostsAction> {
+  type: PostsActionTypes.SEARCH_POSTS_FAIL;
+}
+
 export type PostsActions =
   | GetAllPostsAction
   | GetAllPostsActionSuccess
@@ -50,4 +67,7 @@ export type PostsActions =
   | GetPostByIdAction
   | GetPostByIdActionSuccess
   | GetPostByIdActionFail
-  | CloseDialogAction;
+  | CloseDialogAction
+  | SearchPostsAction
+  | SearchPostsActionSuccess
+  | SearchPostsActionFail;

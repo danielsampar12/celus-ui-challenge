@@ -130,6 +130,28 @@ const CommentsReducer = (state = initialState, action: CommentsActions) => {
       };
     }
     case CommentsActionsTypes.DELETE_COMMENT: {
+      if (action.commentReplyId) {
+        let updateSelectedComment: ICommentsWithReplies | null = null;
+        const newComments = state.comments.map((comment) => {
+          if (comment.id === action.commentReplyId) {
+            updateSelectedComment = {
+              ...comment,
+              replies: comment.replies.filter((reply) => reply.id !== action.commentId),
+            };
+
+            return updateSelectedComment;
+          }
+
+          return comment;
+        });
+
+        return {
+          ...state,
+          comments: newComments,
+          selectedComment: updateSelectedComment,
+        };
+      }
+
       const newComments = state.comments.filter((comment) => comment.id !== action.commentId);
       return {
         ...state,

@@ -68,9 +68,10 @@ export const editComment = (commentId: string, newText: string, commentReplyId?:
   };
 };
 
-export const deleteComment = (commentId: string): DeleteCommentAction => {
+export const deleteComment = (commentId: string, commentReplyId?: string): DeleteCommentAction => {
   return {
     commentId,
+    commentReplyId,
     type: CommentsActionsTypes.DELETE_COMMENT,
   };
 };

@@ -68,6 +68,7 @@ export interface EditCommentAction {
 
 export interface DeleteCommentAction {
   commentId: string;
+  commentReplyId?: string;
   type: CommentsActionsTypes.DELETE_COMMENT;
 }
 

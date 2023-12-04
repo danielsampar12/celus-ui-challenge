@@ -39,7 +39,7 @@ function Comment({ comment, isReply = false }: IProps) {
   const handleDeleteComment = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation();
 
-    dispatch(deleteComment(comment.id));
+    dispatch(deleteComment(comment.id, comment.repliedToCommentId));
   };
 
   const handleChooseButtons = () => {

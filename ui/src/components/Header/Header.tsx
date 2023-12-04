@@ -1,13 +1,19 @@
-import { HeaderContainer, Logo, HeaderTitle } from './styles';
+import { HeaderContainer, Logo, HeaderTitle, LogoAndTitleContainer } from './styles';
 import { IProps } from './IProps';
 import Search from 'components/Search';
+import { useNavigate } from 'react-router-dom';
 
 function Header({ logo }: IProps) {
+  const navigate = useNavigate();
+
   return (
-    <HeaderContainer>
-      <Logo src={logo} alt="logo" />
-      <HeaderTitle>Travel Blog</HeaderTitle>
+    <HeaderContainer onClick={() => navigate('/')}>
+      <LogoAndTitleContainer>
+        <Logo src={logo} alt="logo" />
+        <HeaderTitle>Travel Blog</HeaderTitle>
+      </LogoAndTitleContainer>
       <Search />
+      <div></div>
     </HeaderContainer>
   );
 }

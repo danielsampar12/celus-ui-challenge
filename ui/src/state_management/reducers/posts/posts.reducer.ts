@@ -13,11 +13,6 @@ export const initialState: PostsState = {
 const PostReducer = (state = initialState, action: PostsActions) => {
   switch (action.type) {
     case PostsActionTypes.SEARCH_POSTS_SUCCESS:
-      return {
-        ...state,
-        postsList: action.payload.data,
-      };
-
     case PostsActionTypes.GET_ALL_POSTS_SUCCESS:
       return {
         ...state,

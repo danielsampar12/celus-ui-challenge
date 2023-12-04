@@ -13,6 +13,7 @@ export enum CommentsActionsTypes {
   UNSELECT_COMMENT = 'UNSELECT_COMMENT',
   EDIT_COMMENT = 'EDIT_COMMENT',
   DELETE_COMMENT = 'DELETE_COMMENT',
+  CREATE_REPLY = 'CREATE_REPLY',
 }
 
 export interface GetCommentsByPostIdAction extends AxiosRequestPayload {
@@ -70,6 +71,11 @@ export interface DeleteCommentAction {
   type: CommentsActionsTypes.DELETE_COMMENT;
 }
 
+export interface CreateReplyAction {
+  newReply: IComment;
+  type: CommentsActionsTypes.CREATE_REPLY;
+}
+
 export type CommentsActions =
   | GetCommentsByPostIdAction
   | GetCommentsByPostIdActionSuccess
@@ -80,4 +86,5 @@ export type CommentsActions =
   | EditCommentAction
   | DeleteCommentAction
   | OpenEditCommentDialogAction
-  | UnselectCommentAction;
+  | UnselectCommentAction
+  | CreateReplyAction;

@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import { useAppDispatch, useAppSelector } from 'state_management/hooks';
-import { createComment } from 'state_management/actions/comments/comments.actions';
+import { createComment, createReply } from 'state_management/actions/comments/comments.actions';
 
 import { Container, Input, SendButton, SendText } from './styles';
+import { IProps } from './IProps';
+import { IComment } from 'modals/comments/Modals';
 
-function CreateCommentInput() {
+function CreateCommentInput({ isCreateReply = false }: IProps) {
   const [commentText, setCommentText] = useState('');
   const { selectedPost } = useAppSelector((state) => state.posts);
   const { user } = useAppSelector((state) => state.users);
@@ -19,18 +21,23 @@ function CreateCommentInput() {
     }
 
     const { name: username, image: userImage, id: userId } = user;
+    const newComment: IComment = {
+      id: uuidv4(),
+      postId: selectedPost.id,
+      text: commentText,
+      userId,
+      username,
+      userImage,
+      createAt: new Date().toISOString(),
+    };
+    const action = !isCreateReply
+      ? createComment(newComment)
+      : createReply({
+          ...newComment,
+          repliedToCommentId: selectedPost.id,
+        });
 
-    dispatch(
-      createComment({
-        id: uuidv4(),
-        postId: selectedPost.id,
-        text: commentText,
-        userId,
-        username,
-        userImage,
-        createAt: new Date().toISOString(),
-      }),
-    );
+    dispatch(action);
 
     setCommentText('');
   };

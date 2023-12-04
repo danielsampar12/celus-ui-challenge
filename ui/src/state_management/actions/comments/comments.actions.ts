@@ -3,6 +3,7 @@ import {
   CloseEditCommentDialogAction,
   CommentsActionsTypes,
   CreateCommentAction,
+  CreateReplyAction,
   DeleteCommentAction,
   EditCommentAction,
   GetCommentsByPostIdAction,
@@ -28,6 +29,13 @@ export const createComment = (comment: IComment): CreateCommentAction => {
   return {
     newComment: comment,
     type: CommentsActionsTypes.CREATE_COMMENT,
+  };
+};
+
+export const createReply = (reply: IComment): CreateReplyAction => {
+  return {
+    newReply: reply,
+    type: CommentsActionsTypes.CREATE_REPLY,
   };
 };
 

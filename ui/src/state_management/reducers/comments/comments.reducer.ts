@@ -94,6 +94,18 @@ const CommentsReducer = (state = initialState, action: CommentsActions) => {
         ...state,
         selectedComment: null,
       };
+    case CommentsActionsTypes.CREATE_REPLY: {
+      const commentsWithNewReply = state.comments.map((comment) =>
+        comment.id === action.newReply.repliedToCommentId
+          ? { ...comment, replies: [...comment.replies, action.newReply] }
+          : comment,
+      );
+
+      return {
+        ...state,
+        comments: commentsWithNewReply,
+      };
+    }
     default:
       return state;
   }

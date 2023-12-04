@@ -6,8 +6,9 @@ import { useAppDispatch, useAppSelector } from 'state_management/hooks';
 import { createComment } from 'state_management/actions/comments/comments.actions';
 
 import { Container, Input, SendButton, SendText } from './styles';
+import { IProps } from './IProps';
 
-function CreateCommentInput() {
+function CreateCommentInput({ replyCommentId = undefined }: IProps) {
   const [commentText, setCommentText] = useState('');
   const { selectedPost } = useAppSelector((state) => state.posts);
   const { user } = useAppSelector((state) => state.users);
@@ -29,6 +30,7 @@ function CreateCommentInput() {
         username,
         userImage,
         createAt: new Date().toISOString(),
+        repliedToCommentId: replyCommentId,
       }),
     );
 

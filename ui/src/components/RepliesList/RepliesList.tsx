@@ -7,21 +7,21 @@ import { Container, ScrollDiv, Title, TitleContainer } from './styles';
 import CreateCommentInput from 'components/CreateCommentInput';
 import { IProps } from './IProps';
 
-function RepliesList({ replies }: IProps) {
+function RepliesList({ selectedComment }: IProps) {
   return (
     <Container>
       <TitleContainer>
-        <Title>Comments ({replies.length})</Title>
+        <Title>Replies ({selectedComment.replies.length})</Title>
         <SouthIcon />
       </TitleContainer>
 
       <ScrollDiv>
-        {replies.map((reply) => (
+        {selectedComment.replies.map((reply) => (
           <Comment key={reply.id} isReply comment={{ ...reply, replies: [] }} />
         ))}
       </ScrollDiv>
 
-      <CreateCommentInput />
+      <CreateCommentInput replyCommentId={selectedComment.id} />
     </Container>
   );
 }

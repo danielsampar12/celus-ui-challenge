@@ -1,6 +1,6 @@
 import { Dialog, IconButton } from '@mui/material';
 import { IProps } from './IProps';
-import { useAppDispatch } from 'state_management/hooks';
+import { useAppDispatch, useAppSelector } from 'state_management/hooks';
 
 import CloseIcon from '@mui/icons-material/Close';
 import {
@@ -16,13 +16,20 @@ import {
 import { unselectComment } from 'state_management/actions/comments/comments.actions';
 
 import RepliesList from 'components/RepliesList';
+import { AppState } from 'state_management/store';
 
-function CommentDialog({ open, selectedComment }: IProps) {
-  const { userImage, text, username, replies } = selectedComment;
+function CommentDialog({ open }: IProps) {
+  const { selectedComment } = useAppSelector((state: AppState) => state.comments);
+
   const dispatch = useAppDispatch();
   const handleClose = (): void => {
     dispatch(unselectComment());
   };
+
+  if (!selectedComment) {
+    return <></>;
+  }
+
   return (
     <Dialog open={open} onClose={handleClose} maxWidth={'xl'}>
       <CommentDialogContainer>
@@ -33,19 +40,15 @@ function CommentDialog({ open, selectedComment }: IProps) {
         </CommentDialogHeader>
         <CommentDialogContent>
           <ImageAndNameContainer>
-            <UserImage alt="User icon" src={userImage} />
-            <UserName>{username}</UserName>
+            <UserImage alt="User icon" src={selectedComment.userImage} />
+            <UserName>{selectedComment.username}</UserName>
           </ImageAndNameContainer>
 
-          <CommentText>{text}</CommentText>
+          <CommentText>{selectedComment.text}</CommentText>
         </CommentDialogContent>
-        {replies.length ? (
-          <CommentsSection>
-            <RepliesList replies={replies} />
-          </CommentsSection>
-        ) : (
-          <></>
-        )}
+        <CommentsSection>
+          <RepliesList selectedComment={selectedComment} />
+        </CommentsSection>
       </CommentDialogContainer>
     </Dialog>
   );

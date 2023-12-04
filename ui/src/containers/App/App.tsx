@@ -35,7 +35,7 @@ function App() {
       </Routes>
       <Notification open={open} message={message} />
       {selectedComment && isEditing ? <EditCommentDialog open selectedComment={selectedComment} /> : <></>}
-      {selectedComment && !isEditing ? <CommentDialog open selectedComment={selectedComment} /> : <></>}
+      <CommentDialog open={!!(selectedComment && !isEditing)} />
     </>
   );
 }

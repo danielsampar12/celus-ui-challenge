@@ -1,5 +1,5 @@
-import { IComment } from 'modals/comments/Modals';
+import { ICommentsWithReplies } from 'state_management/reducers/comments/comments.reducer';
 
 export interface IProps {
-  replies: Array<IComment>;
+  selectedComment: ICommentsWithReplies;
 }

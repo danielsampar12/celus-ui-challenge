@@ -52,6 +52,18 @@ const CommentsReducer = (state = initialState, action: CommentsActions) => {
       };
     }
     case CommentsActionsTypes.CREATE_COMMENT:
+      if (action.newComment.repliedToCommentId) {
+        const comments = state.comments.map((comment) =>
+          comment.id === action.newComment.repliedToCommentId
+            ? { ...comment, replies: [...comment.replies, action.newComment] }
+            : comment,
+        );
+        return {
+          ...state,
+          comments,
+        };
+      }
+
       return {
         ...state,
         comments: [...state.comments, { ...action.newComment, replies: [] }],

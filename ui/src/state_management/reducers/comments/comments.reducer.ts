@@ -52,6 +52,29 @@ const CommentsReducer = (state = initialState, action: CommentsActions) => {
       };
     }
     case CommentsActionsTypes.CREATE_COMMENT:
+      if (action.newComment.repliedToCommentId) {
+        let updateSelectedComment: ICommentsWithReplies | null = null;
+
+        const comments = state.comments.map((comment) => {
+          if (comment.id === action.newComment.repliedToCommentId) {
+            updateSelectedComment = {
+              ...comment,
+              replies: [...comment.replies, action.newComment],
+            };
+            return updateSelectedComment;
+          }
+
+          return comment;
+        });
+
+        return {
+          ...state,
+          comments,
+          isEditing: false,
+          // I need this for changing replies since the value it's inside the selectedComment state
+          selectedComment: updateSelectedComment,
+        };
+      }
       return {
         ...state,
         comments: [...state.comments, { ...action.newComment, replies: [] }],

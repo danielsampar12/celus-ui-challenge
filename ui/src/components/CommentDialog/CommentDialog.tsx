@@ -18,7 +18,7 @@ import { unselectComment } from 'state_management/actions/comments/comments.acti
 import RepliesList from 'components/RepliesList';
 
 function CommentDialog({ open, selectedComment }: IProps) {
-  const { userImage, text, username, replies } = selectedComment;
+  const { userImage, text, username, replies, id } = selectedComment;
   const dispatch = useAppDispatch();
   const handleClose = (): void => {
     dispatch(unselectComment());
@@ -39,13 +39,9 @@ function CommentDialog({ open, selectedComment }: IProps) {
 
           <CommentText>{text}</CommentText>
         </CommentDialogContent>
-        {replies.length ? (
-          <CommentsSection>
-            <RepliesList replies={replies} />
-          </CommentsSection>
-        ) : (
-          <></>
-        )}
+        <CommentsSection>
+          <RepliesList replies={replies} replyToCommentId={id} />
+        </CommentsSection>
       </CommentDialogContainer>
     </Dialog>
   );

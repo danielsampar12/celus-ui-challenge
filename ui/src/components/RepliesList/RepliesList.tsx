@@ -7,11 +7,11 @@ import { Container, ScrollDiv, Title, TitleContainer } from './styles';
 import CreateCommentInput from 'components/CreateCommentInput';
 import { IProps } from './IProps';
 
-function RepliesList({ replies }: IProps) {
+function RepliesList({ replies, replyToCommentId }: IProps) {
   return (
     <Container>
       <TitleContainer>
-        <Title>Comments ({replies.length})</Title>
+        <Title>Replies ({replies.length})</Title>
         <SouthIcon />
       </TitleContainer>
 
@@ -21,7 +21,7 @@ function RepliesList({ replies }: IProps) {
         ))}
       </ScrollDiv>
 
-      <CreateCommentInput />
+      <CreateCommentInput replyToCommentId={replyToCommentId} />
     </Container>
   );
 }

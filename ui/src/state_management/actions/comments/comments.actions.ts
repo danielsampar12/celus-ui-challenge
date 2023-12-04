@@ -59,10 +59,11 @@ export const unselectComment = (): UnselectCommentAction => {
   };
 };
 
-export const editComment = (commentId: string, newText: string): EditCommentAction => {
+export const editComment = (commentId: string, newText: string, commentReplyId?: string): EditCommentAction => {
   return {
     commentId,
     newText,
+    commentReplyId,
     type: CommentsActionsTypes.EDIT_COMMENT,
   };
 };

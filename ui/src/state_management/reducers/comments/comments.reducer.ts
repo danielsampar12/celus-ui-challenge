@@ -91,6 +91,36 @@ const CommentsReducer = (state = initialState, action: CommentsActions) => {
         selectedComment: action.selectedComment,
       };
     case CommentsActionsTypes.EDIT_COMMENT: {
+      // logic for editing replies
+      if (action.commentReplyId) {
+        let updateSelectedComment: ICommentsWithReplies | null = null;
+        const newComments = state.comments.map((comment) => {
+          if (comment.id === action.commentReplyId) {
+            const updatedReplies = comment.replies.map((reply) =>
+              reply.id === action.commentId ? { ...reply, text: action.newText } : reply,
+            );
+
+            updateSelectedComment = {
+              ...comment,
+              replies: updatedReplies,
+            };
+
+            return updateSelectedComment;
+          }
+
+          return comment;
+        });
+
+        return {
+          ...state,
+          comments: newComments,
+          selectedComment: updateSelectedComment,
+        };
+      }
+
+      console.log('to aqui no normal');
+
+      // creating normal comments
       const newComments = state.comments.map((comment) =>
         comment.id === action.commentId ? { ...comment, text: action.newText } : comment,
       );

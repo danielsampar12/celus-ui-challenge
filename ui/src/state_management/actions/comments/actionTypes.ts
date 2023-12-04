@@ -62,6 +62,7 @@ export interface UnselectCommentAction {
 export interface EditCommentAction {
   commentId: string;
   newText: string;
+  commentReplyId?: string;
   type: CommentsActionsTypes.EDIT_COMMENT;
 }
 

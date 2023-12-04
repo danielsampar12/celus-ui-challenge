@@ -10,6 +10,7 @@ export enum CommentsActionsTypes {
   CLOSE_EDIT_COMMENT_DIALOG = 'CLOSE_EDIT_COMMENT_DIALOG',
   OPEN_EDIT_COMMENT_DIALOG = 'OPEN_EDIT_COMMENT_DIALOG',
   SELECT_COMMENT = 'SELECT_COMMENT',
+  UNSELECT_COMMENT = 'UNSELECT_COMMENT',
   EDIT_COMMENT = 'EDIT_COMMENT',
   DELETE_COMMENT = 'DELETE_COMMENT',
 }
@@ -53,6 +54,11 @@ export interface SelectCommentAction {
   type: CommentsActionsTypes.SELECT_COMMENT;
 }
 
+export interface UnselectCommentAction {
+  selectedComment: null;
+  type: CommentsActionsTypes.UNSELECT_COMMENT;
+}
+
 export interface EditCommentAction {
   commentId: string;
   newText: string;
@@ -73,4 +79,5 @@ export type CommentsActions =
   | SelectCommentAction
   | EditCommentAction
   | DeleteCommentAction
-  | OpenEditCommentDialogAction;
+  | OpenEditCommentDialogAction
+  | UnselectCommentAction;

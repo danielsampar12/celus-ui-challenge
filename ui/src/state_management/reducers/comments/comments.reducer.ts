@@ -89,6 +89,11 @@ const CommentsReducer = (state = initialState, action: CommentsActions) => {
         selectedComment: action.selectedComment,
         isEditing: true,
       };
+    case CommentsActionsTypes.UNSELECT_COMMENT:
+      return {
+        ...state,
+        selectedComment: null,
+      };
     default:
       return state;
   }

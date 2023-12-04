@@ -19,7 +19,8 @@ export const Header = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  gap: 4px;
+  align-items: center;
+  gap: 8px;
 `;
 
 export const UserImage = styled.img`

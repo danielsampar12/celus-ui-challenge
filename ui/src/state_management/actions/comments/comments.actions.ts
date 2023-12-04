@@ -8,6 +8,7 @@ import {
   GetCommentsByPostIdAction,
   OpenEditCommentDialogAction,
   SelectCommentAction,
+  UnselectCommentAction,
 } from './actionTypes';
 import { ICommentsWithReplies } from 'state_management/reducers/comments/comments.reducer';
 
@@ -48,6 +49,13 @@ export const selectComment = (comment: ICommentsWithReplies): SelectCommentActio
   return {
     selectedComment: comment,
     type: CommentsActionsTypes.SELECT_COMMENT,
+  };
+};
+
+export const unselectComment = (): UnselectCommentAction => {
+  return {
+    selectedComment: null,
+    type: CommentsActionsTypes.UNSELECT_COMMENT,
   };
 };
 

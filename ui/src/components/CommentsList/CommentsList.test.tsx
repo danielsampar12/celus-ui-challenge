@@ -8,7 +8,7 @@ describe('CommentsList', () => {
   test('renders CommentsList', () => {
     render(
       <Provider store={store}>
-        <CommentsList />
+        <CommentsList comments={commentsListMock} />
       </Provider>,
     );
     expect(screen.getByText(`Comments (${commentsListMock.length})`)).toBeInTheDocument();

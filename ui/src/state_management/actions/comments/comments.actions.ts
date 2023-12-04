@@ -6,7 +6,9 @@ import {
   DeleteCommentAction,
   EditCommentAction,
   GetCommentsByPostIdAction,
+  OpenEditCommentDialogAction,
   SelectCommentAction,
+  UnselectCommentAction,
 } from './actionTypes';
 import { ICommentsWithReplies } from 'state_management/reducers/comments/comments.reducer';
 
@@ -35,6 +37,14 @@ export const closeEditCommentDialog = (): CloseEditCommentDialogAction => {
   };
 };
 
+export const openEditCommentDialog = (comment: ICommentsWithReplies): OpenEditCommentDialogAction => {
+  return {
+    isEditing: true,
+    selectedComment: comment,
+    type: CommentsActionsTypes.OPEN_EDIT_COMMENT_DIALOG,
+  };
+};
+
 export const selectComment = (comment: ICommentsWithReplies): SelectCommentAction => {
   return {
     selectedComment: comment,
@@ -42,17 +52,26 @@ export const selectComment = (comment: ICommentsWithReplies): SelectCommentActio
   };
 };
 
-export const editComment = (commentId: string, newText: string): EditCommentAction => {
+export const unselectComment = (): UnselectCommentAction => {
+  return {
+    selectedComment: null,
+    type: CommentsActionsTypes.UNSELECT_COMMENT,
+  };
+};
+
+export const editComment = (commentId: string, newText: string, commentReplyId?: string): EditCommentAction => {
   return {
     commentId,
     newText,
+    commentReplyId,
     type: CommentsActionsTypes.EDIT_COMMENT,
   };
 };
 
-export const deleteComment = (commentId: string): DeleteCommentAction => {
+export const deleteComment = (commentId: string, commentReplyId?: string): DeleteCommentAction => {
   return {
     commentId,
+    commentReplyId,
     type: CommentsActionsTypes.DELETE_COMMENT,
   };
 };

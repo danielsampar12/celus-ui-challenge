@@ -11,10 +11,11 @@ import PostPage from 'components/PostPage';
 import { useEffect } from 'react';
 import { getCurrentUser } from 'state_management/actions/users/users.actions';
 import { EditCommentDialog } from 'components/EditCommentDialog/EditCommentDialog';
+import CommentDialog from 'components/CommentDialog';
 
 function App() {
   const { selectedPost, postsList } = useAppSelector((state: AppState) => state.posts);
-  const { selectedComment } = useAppSelector((state: AppState) => state.comments);
+  const { selectedComment, isEditing } = useAppSelector((state: AppState) => state.comments);
   const { open, message } = useSelector((state: any) => {
     return state.notification;
   });
@@ -33,7 +34,8 @@ function App() {
         <Route path="/post/:id" element={<PostPage post={selectedPost} />} />
       </Routes>
       <Notification open={open} message={message} />
-      {selectedComment ? <EditCommentDialog open selectedComment={selectedComment} /> : <></>}
+      {selectedComment && isEditing ? <EditCommentDialog open selectedComment={selectedComment} /> : <></>}
+      {selectedComment && !isEditing ? <CommentDialog open selectedComment={selectedComment} /> : <></>}
     </>
   );
 }

@@ -28,7 +28,7 @@ export function EditCommentDialog({ open, selectedComment }: IProps) {
   };
 
   const handleSubmitEdtion = (): void => {
-    dispatch(editComment(selectedComment.id, text));
+    dispatch(editComment(selectedComment.id, text, selectedComment.repliedToCommentId));
 
     handleClose();
   };

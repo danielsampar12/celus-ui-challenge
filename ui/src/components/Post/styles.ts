@@ -20,6 +20,8 @@ export const Image = styled.img`
   transition: all 0.5s ease-in-out;
 `;
 export const PostContainer = styled(Paper)`
+  max-width: 360px;
+
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;

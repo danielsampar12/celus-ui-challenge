@@ -1,9 +1,11 @@
 import { CommentsActionsTypes } from 'state_management/actions/comments/actionTypes';
 import CommentsReducer, { initialState } from './comments.reducer';
-import { closeEditCommentDialog, selectComment } from 'state_management/actions/comments/comments.actions';
+import {
+  closeEditCommentDialog,
+  selectComment,
+  unselectComment,
+} from 'state_management/actions/comments/comments.actions';
 import { commentsListMock } from 'mocks/comments.mock';
-
-// TODO
 
 describe('Comments reducer', () => {
   test('default', () => {
@@ -16,6 +18,15 @@ describe('Comments reducer', () => {
 
   test(CommentsActionsTypes.CLOSE_EDIT_COMMENT_DIALOG, () => {
     const action = closeEditCommentDialog();
+    expect(CommentsReducer(initialState, action)).toEqual({
+      ...initialState,
+      selectedComment: null,
+      isEditing: false,
+    });
+  });
+
+  test(CommentsActionsTypes.UNSELECT_COMMENT, () => {
+    const action = unselectComment();
     expect(CommentsReducer(initialState, action)).toEqual({
       ...initialState,
       selectedComment: null,

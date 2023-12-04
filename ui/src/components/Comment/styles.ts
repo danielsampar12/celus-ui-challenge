@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.button`
+  all: unset;
+  cursor: pointer;
+
   display: flex;
   max-width: 100%;
   padding: 24px 25px;
@@ -16,7 +19,8 @@ export const Header = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  gap: 4px;
+  align-items: center;
+  gap: 8px;
 `;
 
 export const UserImage = styled.img`

@@ -15,10 +15,10 @@ describe('Comments actions', () => {
     });
     expect(createComment(commentsListMock[0])).toEqual({
       newComment: commentsListMock[0],
-      type: CommentsActionsTypes.GET_COMMENT_BY_POST_ID,
+      type: CommentsActionsTypes.CREATE_COMMENT,
     });
     expect(selectComment(commentsListMock[0])).toEqual({
-      selectComment: commentsListMock[0],
+      selectedComment: commentsListMock[0],
       type: CommentsActionsTypes.SELECT_COMMENT,
     });
     expect(editComment(commentsListMock[0].id, 'teste')).toEqual({

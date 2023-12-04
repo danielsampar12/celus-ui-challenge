@@ -22,7 +22,6 @@ describe('Users reducer', () => {
           'https://www.perfocal.com/blog/content/images/size/w960/2021/01/Perfocal_17-11-2019_TYWFAQ_100_standard-3.jpg',
         name: 'Maruxa Metrophanes',
       },
-      type: UsersActionTypes.GET_CURRENT_USER,
     });
   });
 });

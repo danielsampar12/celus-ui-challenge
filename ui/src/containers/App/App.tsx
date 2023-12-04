@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import PostPage from 'components/PostPage';
 import { useEffect } from 'react';
 import { getCurrentUser } from 'state_management/actions/users/users.actions';
-import { EditCommentDialog } from 'components/EditCommentDialog/EditCommentDialog';
+import EditCommentDialog from 'components/EditCommentDialog/EditCommentDialog';
 import CommentDialog from 'components/CommentDialog';
 
 function App() {

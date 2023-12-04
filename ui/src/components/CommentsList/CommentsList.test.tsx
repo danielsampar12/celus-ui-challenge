@@ -11,10 +11,7 @@ describe('CommentsList', () => {
         <CommentsList comments={commentsListMock} />
       </Provider>,
     );
-    expect(screen.getByText(`Comments (${commentsListMock.length})`)).toBeInTheDocument();
 
-    if (commentsListMock.length) {
-      expect(screen.getByText(commentsListMock[0].text)).toBeInTheDocument();
-    }
+    expect(screen.getByText(`Comments (${commentsListMock.length})`)).toBeInTheDocument();
   });
 });

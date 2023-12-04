@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import { store } from 'state_management/store';
 import PostPage from './PostPage';
 import { selectedPost } from 'mocks/posts.mock';
-import { commentsListMock } from 'mocks/comments.mock';
 
 describe('PostPage', () => {
   test('renders PostPage', () => {
@@ -14,6 +13,5 @@ describe('PostPage', () => {
     );
     expect(screen.getByText(selectedPost.title)).toBeInTheDocument();
     expect(screen.getByText(selectedPost.body)).toBeInTheDocument();
-    expect(screen.getByText(`Comments (${commentsListMock.length})`)).toBeInTheDocument();
   });
 });

@@ -19,7 +19,7 @@ import {
 
 import Button from 'components/Button';
 
-export function EditCommentDialog({ open, selectedComment }: IProps) {
+function EditCommentDialog({ open, selectedComment }: IProps) {
   const [text, setText] = useState(selectedComment.text);
 
   const dispatch = useAppDispatch();
@@ -60,3 +60,5 @@ export function EditCommentDialog({ open, selectedComment }: IProps) {
     </Dialog>
   );
 }
+
+export default EditCommentDialog;
